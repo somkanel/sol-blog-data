@@ -1,5 +1,6 @@
 import unittest
-from scripts.writing_stats import count_words, extract_post, parse_list, summarize
+from datetime import datetime, timezone
+from scripts.writing_stats import count_words, extract_post, parse_list, summarize, plan_scan
 
 
 class WritingStatisticsTests(unittest.TestCase):
@@ -43,6 +44,46 @@ class WritingStatisticsTests(unittest.TestCase):
         self.assertEqual(stats['by_tag']['daily']['words'], 579)
         self.assertEqual(stats['by_tag']['article']['words'], 123)
         self.assertEqual(stats['totals']['first_date'], '2019-05-14')
+
+
+class IncrementalTests(unittest.TestCase):
+    def fixture(self):
+        posts = [{'url': f'https://blog.solazy.me/p{i}/', 'title': str(i),
+                  'date': '2019-05-14', 'tags': ['daily'], 'words': i,
+                  'body_sha256': 'a' * 64} for i in range(150)]
+        return {p['url']: {k: p[k] for k in ('url', 'title', 'date', 'tags')} for p in posts}, summarize(posts)
+
+    def test_rotation_preserves_full_history_and_reaches_every_post(self):
+        rows, previous = self.fixture()
+        seen = set()
+        for day in range(1, 4):
+            now = datetime(2026, 10, day, tzinfo=timezone.utc)
+            scan, reused = plan_scan(rows, previous, now)
+            self.assertEqual(len(scan), 60)
+            seen.update(p['url'] for p in scan)
+            old = {p['url']: p for p in previous['posts']}
+            previous = summarize(reused + [{**old[p['url']], 'checked_at': now.isoformat()} for p in scan])
+            self.assertEqual(previous['totals']['words'], sum(range(150)))
+        self.assertEqual(seen, set(rows))
+
+    def test_new_recent_changed_removed_and_force_full(self):
+        rows, previous = self.fixture()
+        deleted = next(iter(rows)); del rows[deleted]
+        keys = list(rows)
+        rows[keys[-1]]['date'] = '2026-10-25'
+        rows[keys[-2]]['tags'] = ['daily', 'article']
+        rows[keys[-3]]['title'] = 'edited'
+        rows['https://blog.solazy.me/new/'] = {'url': 'https://blog.solazy.me/new/', 'title': 'new', 'date': '2019-05-14', 'tags': ['article']}
+        now = datetime(2026, 10, 26, tzinfo=timezone.utc)
+        scan, reused = plan_scan(rows, previous, now)
+        selected = {p['url'] for p in scan}
+        self.assertTrue(set(keys[-3:]).issubset(selected))
+        self.assertIn('https://blog.solazy.me/new/', selected)
+        self.assertNotIn(deleted, selected | {p['url'] for p in reused})
+        self.assertEqual(len(scan) + len(reused), len(rows))
+        self.assertEqual(plan_scan(rows, previous, now, full=True), (list(rows.values()), []))
+        previous['counting']['version'] = 0
+        self.assertEqual(plan_scan(rows, previous, now)[1], [])
 
 
 if __name__ == '__main__':

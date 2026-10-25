@@ -2,7 +2,7 @@
 """Count all public Daily/Article bodies. Publish only after a complete scan."""
 import argparse
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 import hashlib
 import json
 from pathlib import Path
@@ -184,12 +184,35 @@ def summarize(posts):
             'by_date': by_date, 'posts': posts}
 
 
+def plan_scan(articles, previous, now, full=False):
+    """Keep the whole inventory; refresh recent posts and 60 oldest checks."""
+    if (full or not previous or previous.get('complete') is not True
+            or previous.get('counting', {}).get('version') != 1):
+        return list(articles.values()), []
+    old = {p['url']: p for p in previous['posts']}
+    cutoff = (now.date() - timedelta(days=7)).isoformat()
+    scan, candidates = [], []
+    for row in articles.values():
+        cached = old.get(row['url'])
+        if (not cached or row['date'] >= cutoff
+                or any(row[k] != cached.get(k) for k in ('title', 'date', 'tags'))
+                or type(cached.get('words')) is not int or cached['words'] < 0
+                or not cached.get('body_sha256')):
+            scan.append(row)
+        else:
+            candidates.append(cached)
+    candidates.sort(key=lambda p: (p.get('checked_at', ''), p['url']))
+    scan.extend(articles[p['url']] for p in candidates[:60])
+    return scan, candidates[60:]
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, default=Path('writing-data/writing-stats.json'))
     parser.add_argument('--cache-dir', type=Path, default=Path('.cache/writing-stats'))
     parser.add_argument('--resume', action='store_true', help='Reuse downloaded HTML only for an interrupted first scan')
     parser.add_argument('--workers', type=int, default=4)
+    parser.add_argument('--full', action='store_true', help='Recheck every historical body')
     args = parser.parse_args()
     if not 1 <= args.workers <= 8:
         parser.error('--workers must be between 1 and 8')
@@ -221,25 +244,35 @@ def main():
         removed = {p['url'] for p in previous['posts']} - set(articles)
         if len(removed) > max(3, len(previous['posts']) * 0.05):
             raise ValueError(f'Unexpected removal of {len(removed)} posts; output unchanged')
-    posts, errors = [], []
+    started = time.monotonic()
+    checked_at = datetime.now(timezone.utc).isoformat()
+    to_scan, reused = plan_scan(articles, previous, datetime.now(timezone.utc), args.full)
+    posts, errors = list(reused), []
+    scanned = 0
+    print(f'Body refresh: {len(to_scan)}; reused: {len(reused)}; all-time: {len(articles)}', flush=True)
     with ThreadPoolExecutor(max_workers=args.workers) as pool:
         futures = {pool.submit(lambda p: extract_post(fetch.get(p['url']), p), row): row
-                   for row in articles.values()}
+                   for row in to_scan}
         for future in as_completed(futures):
             row = futures[future]
             try:
-                posts.append(future.result())
+                posts.append({**future.result(), 'checked_at': checked_at})
             except Exception as error:
                 errors.append({'url': row['url'], 'error': str(error)})
                 print(f'ERROR {row["url"]}: {error}', flush=True)
-            if (len(posts) + len(errors)) % 25 == 0:
-                print(f'Scanned {len(posts) + len(errors)}/{len(articles)}; errors={len(errors)}', flush=True)
+            scanned += 1
+            if scanned % 25 == 0:
+                print(f'Scanned {scanned}/{len(to_scan)}; errors={len(errors)}', flush=True)
     if errors:
         error_path = args.output.with_suffix('.errors.json')
         error_path.parent.mkdir(parents=True, exist_ok=True)
         error_path.write_text(json.dumps(errors, ensure_ascii=False, indent=2) + '\n')
         raise SystemExit(f'{len(errors)} articles failed; published output unchanged. See {error_path}')
     result = summarize(posts)
+    result['refresh'] = {'mode': 'full' if args.full or not reused else 'incremental',
+                         'fetched_posts': len(to_scan), 'reused_posts': len(reused),
+                         'oldest_checked_at': min(p.get('checked_at', '') for p in posts),
+                         'body_scan_seconds': round(time.monotonic() - started, 2)}
     args.output.parent.mkdir(parents=True, exist_ok=True)
     temporary = args.output.with_suffix('.tmp')
     temporary.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
