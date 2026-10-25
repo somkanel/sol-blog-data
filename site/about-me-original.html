@@ -1,0 +1,318 @@
+<style>
+  .about-page {
+    --about-soft-line: #d0d7de;
+    --about-soft-text: #57606a;
+    --about-heat-0: #ebedf0;
+    --about-heat-1: #c0c0c0;
+    --about-heat-2: #969696;
+    --about-heat-3: #666666;
+    --about-heat-4: #1b1f23;
+  }
+
+  .about-intro { margin-bottom: 2.4em; }
+  .about-intro h2 { margin: 0 0 0.7em; font-size: 1.55em; }
+  .about-intro p { margin: 0; }
+  .about-section { margin-top: 2.8em; }
+  .about-section h3 {
+    margin: 0 0 0.9em;
+    padding-bottom: 0.35em;
+    border-bottom: 1px solid currentColor;
+    font-size: 1.18em;
+  }
+  .about-section p { margin: 0 0 1.15em; }
+
+  .plain-list {
+    margin: 1.4em 0;
+    padding: 0;
+    border-top: 1px solid var(--about-soft-line);
+  }
+  .plain-row {
+    display: grid;
+    grid-template-columns: 7em minmax(0, 1fr);
+    gap: 1em;
+    padding: 0.7em 0;
+    border-bottom: 1px solid var(--about-soft-line);
+  }
+  .plain-row dt { color: var(--about-soft-text); }
+  .plain-row dd { margin: 0; }
+
+  .movie-line {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.25em 0.45em;
+    margin: 1.6em 0;
+    padding: 0.9em 1em;
+    border: 1px solid currentColor;
+  }
+  .movie-line strong {
+    min-width: 2ch;
+    font-size: 1.35em;
+    font-variant-numeric: tabular-nums;
+  }
+  .movie-line a,
+  .contact-line a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .movie-status { color: var(--about-soft-text); }
+  .contact-line { line-height: 2; }
+  .contact-line a { white-space: nowrap; }
+  .contact-line .sep {
+    margin: 0 0.35em;
+    color: var(--about-soft-line);
+  }
+
+  .activity {
+    margin-top: 3em;
+    padding-top: 1.4em;
+    border-top: 1px solid currentColor;
+  }
+  .activity h3 { margin: 0 0 1em; font-size: 1.18em; }
+  #github-graph-container {
+    margin: 0;
+    padding: 1em;
+    border: 1px solid var(--about-soft-line);
+    border-radius: 6px;
+    background: var(--background-color);
+    color: var(--text-color);
+    user-select: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  }
+  #post-stats {
+    margin-bottom: 12px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .heatmap-layout { display: flex; gap: 10px; }
+  .weekday-labels {
+    display: grid;
+    grid-template-rows: repeat(7, 12px);
+    gap: 3px;
+    margin-top: 1px;
+    color: var(--about-soft-text);
+    font-size: 9px;
+  }
+  .weekday-labels span { line-height: 12px; }
+  .weekday-labels span:nth-child(1) { grid-row: 2; }
+  .weekday-labels span:nth-child(2) { grid-row: 4; }
+  .weekday-labels span:nth-child(3) { grid-row: 6; }
+  #heatmap-scroll-container {
+    overflow-x: auto;
+    flex-grow: 1;
+    padding-bottom: 5px;
+  }
+  .github-heatmap {
+    display: grid;
+    grid-template-rows: repeat(7, 12px);
+    grid-auto-flow: column;
+    grid-auto-columns: 12px;
+    gap: 3px;
+  }
+  .cube {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    background: var(--about-heat-0);
+    outline: 1px solid rgba(127, 127, 127, 0.12);
+    transition: transform 0.1s ease;
+  }
+  .cube:hover {
+    transform: scale(1.2);
+    z-index: 10;
+    outline: 1px solid var(--about-soft-text);
+  }
+  .level-0 { background: var(--about-heat-0); }
+  .level-1 { background: var(--about-heat-1); }
+  .level-2 { background: var(--about-heat-2); }
+  .level-3 { background: var(--about-heat-3); }
+  .level-4 { background: var(--about-heat-4); }
+  #heatmap-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+    color: var(--about-soft-text);
+    font-size: 11px;
+  }
+  .heatmap-legend {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .heatmap-legend .cube { flex: 0 0 12px; }
+  #heatmap-scroll-container::-webkit-scrollbar { height: 4px; }
+  #heatmap-scroll-container::-webkit-scrollbar-thumb {
+    background: var(--about-soft-line);
+    border-radius: 10px;
+  }
+  #heatmap-scroll-container::-webkit-scrollbar-track { background: transparent; }
+
+  @media (prefers-color-scheme: dark) {
+    .about-page {
+      --about-soft-line: #555b61;
+      --about-soft-text: #b7bdc3;
+      --about-heat-0: #292d31;
+      --about-heat-1: #5f6469;
+      --about-heat-2: #8c9196;
+      --about-heat-3: #c3c7ca;
+      --about-heat-4: #ffffff;
+    }
+  }
+
+  @media only screen and (max-width: 767px) {
+    .plain-row { grid-template-columns: 5.6em minmax(0, 1fr); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cube { transition: none; }
+  }
+</style>
+
+<div class="about-page">
+<section aria-labelledby="about-title" class="about-intro">
+<h2 id="about-title">关于我</h2>
+<p>你好，我是 Sol，90 后，山东青岛人，现在杭州工作和生活。狮子座，INTJ-A，男生，丁克。</p>
+</section>
+<section aria-labelledby="life-title" class="about-section">
+<h3 id="life-title">生活上</h3>
+<p>喜欢美食。不止于品尝，也着迷于食物背后的技法与原理，以及一道菜所承载的文化与历史。希望有一天能把味道描述清楚，而不是只会说好吃。</p>
+<p>爱看电影，但一直有点审片障碍，很难迅速进入一部影片的世界。尤其喜欢 Jessica Lange 和 Tilda Swinton。</p>
+<p>也喜欢音乐。Lady Gaga 早期粉丝，三座大山在我这里的排名一直是 Whitney Houston ≥ Mariah Carey &gt; Céline Dion，另外也很喜欢 Michael Jackson。我爱唱歌，退休后的理想是去酒吧驻唱。</p>
+<p><dl class="plain-list">
+<div class="plain-row"><dt>经常在做</dt><dd>找吃的、看电影、听歌、唱歌，以及研究它们为什么吸引我。</dd></div>
+<div class="plain-row"><dt>歌手排名</dt><dd>Whitney ≥ Mariah &gt; Céline</dd></div>
+<div class="plain-row"><dt>想做的事</dt><dd>退休以后，在一间不太大的酒吧唱到打烊。</dd></div>
+</dl></p>
+<p><div aria-live="polite" class="movie-line">
+<strong id="movie-count">…</strong>
+<span class="movie-status" id="movie-count-label">部已记录的影视作品。</span>
+<a href="/Movies/">去 Movies 页面看看 ↗</a>
+</div></p>
+</section>
+<section aria-labelledby="work-title" class="about-section">
+<h3 id="work-title">工作上</h3>
+<p>做过销售和策划，职业生涯的后半程一直在各类公司担任产品经理。后来做过智能制造工厂 COO，从规划产品的人变成每天面对交付、组织和效率的人。</p>
+<p>现在是 AI 行业某公司的高级产品总监。工作内容会变，但我关心的事情没有太大变化：先弄清楚真实的问题，再想办法让复杂的系统对人简单一点。</p>
+</section>
+<section aria-labelledby="site-title" class="about-section">
+<h3 id="site-title">关于这个博客</h3>
+<p>这里运行在 Bearblog 上。我选择它是因为足够简单，也保留了足够多自己动手的空间。比如 Movies 页面，会定时读取我的豆瓣观看记录，再补全信息并渲染出来。它也是我目前最得意的一个页面。</p>
+<p>Daily 收录日常更新，Article 放教程和长文。如果只是想随便逛逛，从任何一篇开始都可以。</p>
+</section>
+<section aria-labelledby="find-title" class="about-section">
+<h3 id="find-title">在哪儿找到我</h3>
+<p class="contact-line"><a href="https://solazy.me/">主页</a><span class="sep">/</span><a href="https://m.okjike.com/users/9fa44a7f-fbe9-4733-ab74-6b6682d642fc">即刻</a><span class="sep">/</span><a href="https://x.com/somkanel">𝕏</a><span class="sep">/</span><a href="https://t.me/fakeye">不求甚解</a><span class="sep">/</span><a href="https://www.instagram.com/somkanel/">Instagram</a><span class="sep">/</span><a href="https://w.dianping.com/cube/evoke/dianping.html?url=dianping%3A%2F%2Fuser%3Fuserid%3D33351874&amp;shareid=1ZI5eY02JC_1777731534">大众点评</a></p>
+<p>以上。以后想起什么，再回来补。</p>
+</section>
+<section aria-labelledby="activity-title" class="activity">
+<h3 id="activity-title">过去一年的博客更新</h3>
+<div id="github-graph-container">
+<div aria-live="polite" id="post-stats" role="status">正在同步更新数据...</div>
+<div class="heatmap-layout">
+<div aria-hidden="true" class="weekday-labels"><span>周一</span><span>周三</span><span>周五</span></div>
+<div id="heatmap-scroll-container">
+<div aria-label="过去一年博客更新频率热力图" class="github-heatmap" id="heatmap" role="img"></div>
+</div>
+</div>
+<div id="heatmap-footer">
+<span>过去一年的更新频率记录</span>
+<div aria-hidden="true" class="heatmap-legend">
+<span>少</span><span class="cube level-0"></span><span class="cube level-1"></span><span class="cube level-2"></span><span class="cube level-3"></span><span class="cube level-4"></span><span>多</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+
+<script>
+  (() => {
+    const count = document.getElementById('movie-count');
+    const label = document.getElementById('movie-count-label');
+    const url = 'https://raw.githubusercontent.com/somkanel/sol-douban-data/main/data/movie.json?t=' + Date.now();
+
+    fetch(url, { cache: 'no-store' })
+      .then(response => {
+        if (!response.ok) throw new Error('JSON HTTP ' + response.status);
+        return response.json();
+      })
+      .then(data => {
+        const movies = Array.isArray(data) ? data : (Array.isArray(data.list) ? data.list : []);
+        count.textContent = String(movies.length);
+        label.textContent = '部已记录的影视作品。';
+        label.classList.remove('movie-status');
+      })
+      .catch(error => {
+        console.error('Movie count loading failed:', error);
+        count.textContent = '…';
+        label.textContent = '观影数据暂时没有加载出来。';
+      });
+  })();
+
+  async function renderGithubGraph() {
+    const container = document.getElementById('heatmap');
+    const stats = document.getElementById('post-stats');
+
+    try {
+      const response = await fetch('/Daily/');
+      if (!response.ok) throw new Error('Daily HTTP ' + response.status);
+      const htmlText = await response.text();
+      const counts = new Map();
+      const today = new Date();
+      const oneYearAgo = new Date();
+      oneYearAgo.setFullYear(today.getFullYear() - 1);
+      const matches = htmlText.match(/\d{4}-\d{2}-\d{2}/g);
+
+      if (matches) {
+        matches.forEach(dateStr => {
+          const date = new Date(dateStr);
+          if (!Number.isNaN(date.getTime()) && date >= oneYearAgo && date <= today) {
+            const key = date.toDateString();
+            counts.set(key, (counts.get(key) || 0) + 1);
+          }
+        });
+      }
+
+      stats.textContent = `过去一年共坚持更新了 ${counts.size} 天`;
+
+      const startDate = new Date(oneYearAgo);
+      while (startDate.getDay() !== 0) startDate.setDate(startDate.getDate() - 1);
+
+      const fragment = document.createDocumentFragment();
+      const tempDate = new Date(startDate);
+
+      while (tempDate <= today) {
+        const key = tempDate.toDateString();
+        const postCount = counts.get(key) || 0;
+        const cube = document.createElement('div');
+        const dateText = `${tempDate.getFullYear()}年${tempDate.getMonth() + 1}月${tempDate.getDate()}日`;
+        cube.className = 'cube';
+        cube.title = `${dateText}: ${postCount > 0 ? '有更新' : '无更新'}`;
+        cube.setAttribute('aria-hidden', 'true');
+
+        if (postCount > 0) {
+          if (postCount <= 2) cube.classList.add('level-1');
+          else if (postCount <= 4) cube.classList.add('level-2');
+          else if (postCount <= 6) cube.classList.add('level-3');
+          else cube.classList.add('level-4');
+        }
+
+        fragment.appendChild(cube);
+        tempDate.setDate(tempDate.getDate() + 1);
+      }
+
+      container.replaceChildren(fragment);
+      container.setAttribute('aria-label', `过去一年共更新 ${counts.size} 天`);
+      requestAnimationFrame(() => {
+        const scrollContainer = document.getElementById('heatmap-scroll-container');
+        scrollContainer.scrollLeft = scrollContainer.scrollWidth;
+      });
+    } catch (error) {
+      console.error('Heatmap rendering failed:', error);
+      stats.textContent = '暂无更新墙数据';
+    }
+  }
+
+  renderGithubGraph();
+</script>

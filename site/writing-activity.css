@@ -1,0 +1,36 @@
+.writing-totals {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1em;
+  margin: 0.8em 0 0.7em;
+}
+.writing-total { margin: 0; }
+.writing-total strong {
+  display: block;
+  font-size: clamp(1.5em, 5vw, 2.1em);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.35;
+}
+.writing-total span { color: var(--about-soft-text); font-size: 0.85em; }
+.writing-note { color: var(--about-soft-text); font-size: 0.8em; line-height: 1.7; }
+.writing-rules { margin: 0.8em 0 1.6em; }
+.writing-rules summary { cursor: pointer; }
+.writing-rules p { margin: 0.7em 0; }
+.writing-year-title { font-size: 1em; margin: 1.8em 0 0.8em; }
+.heatmap-layout, #heatmap-scroll-container { min-width: 0; }
+button.cube {
+  display: block;
+  appearance: none;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+  min-height: 0;
+  border: 0;
+  cursor: pointer;
+}
+button.cube:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+.cube-padding { visibility: hidden; }
+#heatmap-detail { min-height: 1.7em; margin: 0.7em 0 0; font-size: 12px; }
+#heatmap-footer { flex-wrap: wrap; }
+#post-stats { line-height: 1.7; }

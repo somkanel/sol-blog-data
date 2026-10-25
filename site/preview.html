@@ -1,0 +1,422 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Me · 全部历史写作统计预览</title><style>
+:root { color-scheme: light dark; --background-color: #fff; --text-color: #222; }
+@media (prefers-color-scheme: dark) { :root { --background-color: #1d1f21; --text-color: #eee; } }
+body { max-width: 680px; margin: 40px auto; padding: 0 20px; font: 16px/1.75 system-ui, sans-serif;
+  background: var(--background-color); color: var(--text-color); overflow-wrap: break-word; }
+a { color: inherit; } * { box-sizing: border-box; }
+</style></head><body><style>
+  .about-page {
+    --about-soft-line: #d0d7de;
+    --about-soft-text: #57606a;
+    --about-heat-0: #ebedf0;
+    --about-heat-1: #c0c0c0;
+    --about-heat-2: #969696;
+    --about-heat-3: #666666;
+    --about-heat-4: #1b1f23;
+  }
+
+  .about-intro { margin-bottom: 2.4em; }
+  .about-intro h2 { margin: 0 0 0.7em; font-size: 1.55em; }
+  .about-intro p { margin: 0; }
+  .about-section { margin-top: 2.8em; }
+  .about-section h3 {
+    margin: 0 0 0.9em;
+    padding-bottom: 0.35em;
+    border-bottom: 1px solid currentColor;
+    font-size: 1.18em;
+  }
+  .about-section p { margin: 0 0 1.15em; }
+
+  .plain-list {
+    margin: 1.4em 0;
+    padding: 0;
+    border-top: 1px solid var(--about-soft-line);
+  }
+  .plain-row {
+    display: grid;
+    grid-template-columns: 7em minmax(0, 1fr);
+    gap: 1em;
+    padding: 0.7em 0;
+    border-bottom: 1px solid var(--about-soft-line);
+  }
+  .plain-row dt { color: var(--about-soft-text); }
+  .plain-row dd { margin: 0; }
+
+  .movie-line {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.25em 0.45em;
+    margin: 1.6em 0;
+    padding: 0.9em 1em;
+    border: 1px solid currentColor;
+  }
+  .movie-line strong {
+    min-width: 2ch;
+    font-size: 1.35em;
+    font-variant-numeric: tabular-nums;
+  }
+  .movie-line a,
+  .contact-line a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .movie-status { color: var(--about-soft-text); }
+  .contact-line { line-height: 2; }
+  .contact-line a { white-space: nowrap; }
+  .contact-line .sep {
+    margin: 0 0.35em;
+    color: var(--about-soft-line);
+  }
+
+  .activity {
+    margin-top: 3em;
+    padding-top: 1.4em;
+    border-top: 1px solid currentColor;
+  }
+  .activity h3 { margin: 0 0 1em; font-size: 1.18em; }
+  #github-graph-container {
+    margin: 0;
+    padding: 1em;
+    border: 1px solid var(--about-soft-line);
+    border-radius: 6px;
+    background: var(--background-color);
+    color: var(--text-color);
+    user-select: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  }
+  #post-stats {
+    margin-bottom: 12px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .heatmap-layout { display: flex; gap: 10px; }
+  .weekday-labels {
+    display: grid;
+    grid-template-rows: repeat(7, 12px);
+    gap: 3px;
+    margin-top: 1px;
+    color: var(--about-soft-text);
+    font-size: 9px;
+  }
+  .weekday-labels span { line-height: 12px; }
+  .weekday-labels span:nth-child(1) { grid-row: 2; }
+  .weekday-labels span:nth-child(2) { grid-row: 4; }
+  .weekday-labels span:nth-child(3) { grid-row: 6; }
+  #heatmap-scroll-container {
+    overflow-x: auto;
+    flex-grow: 1;
+    padding-bottom: 5px;
+  }
+  .github-heatmap {
+    display: grid;
+    grid-template-rows: repeat(7, 12px);
+    grid-auto-flow: column;
+    grid-auto-columns: 12px;
+    gap: 3px;
+  }
+  .cube {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    background: var(--about-heat-0);
+    outline: 1px solid rgba(127, 127, 127, 0.12);
+    transition: transform 0.1s ease;
+  }
+  .cube:hover {
+    transform: scale(1.2);
+    z-index: 10;
+    outline: 1px solid var(--about-soft-text);
+  }
+  .level-0 { background: var(--about-heat-0); }
+  .level-1 { background: var(--about-heat-1); }
+  .level-2 { background: var(--about-heat-2); }
+  .level-3 { background: var(--about-heat-3); }
+  .level-4 { background: var(--about-heat-4); }
+  #heatmap-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+    color: var(--about-soft-text);
+    font-size: 11px;
+  }
+  .heatmap-legend {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .heatmap-legend .cube { flex: 0 0 12px; }
+  #heatmap-scroll-container::-webkit-scrollbar { height: 4px; }
+  #heatmap-scroll-container::-webkit-scrollbar-thumb {
+    background: var(--about-soft-line);
+    border-radius: 10px;
+  }
+  #heatmap-scroll-container::-webkit-scrollbar-track { background: transparent; }
+
+  @media (prefers-color-scheme: dark) {
+    .about-page {
+      --about-soft-line: #555b61;
+      --about-soft-text: #b7bdc3;
+      --about-heat-0: #292d31;
+      --about-heat-1: #5f6469;
+      --about-heat-2: #8c9196;
+      --about-heat-3: #c3c7ca;
+      --about-heat-4: #ffffff;
+    }
+  }
+
+  @media only screen and (max-width: 767px) {
+    .plain-row { grid-template-columns: 5.6em minmax(0, 1fr); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cube { transition: none; }
+  }
+
+.writing-totals {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1em;
+  margin: 0.8em 0 0.7em;
+}
+.writing-total { margin: 0; }
+.writing-total strong {
+  display: block;
+  font-size: clamp(1.5em, 5vw, 2.1em);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.35;
+}
+.writing-total span { color: var(--about-soft-text); font-size: 0.85em; }
+.writing-note { color: var(--about-soft-text); font-size: 0.8em; line-height: 1.7; }
+.writing-rules { margin: 0.8em 0 1.6em; }
+.writing-rules summary { cursor: pointer; }
+.writing-rules p { margin: 0.7em 0; }
+.writing-year-title { font-size: 1em; margin: 1.8em 0 0.8em; }
+.heatmap-layout, #heatmap-scroll-container { min-width: 0; }
+button.cube {
+  display: block;
+  appearance: none;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+  min-height: 0;
+  border: 0;
+  cursor: pointer;
+}
+button.cube:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+.cube-padding { visibility: hidden; }
+#heatmap-detail { min-height: 1.7em; margin: 0.7em 0 0; font-size: 12px; }
+#heatmap-footer { flex-wrap: wrap; }
+#post-stats { line-height: 1.7; }
+</style>
+<div class="about-page">
+<section aria-labelledby="about-title" class="about-intro">
+<h2 id="about-title">关于我</h2>
+<p>你好，我是 Sol，90 后，山东青岛人，现在杭州工作和生活。狮子座，INTJ-A，男生，丁克。</p>
+</section>
+<section aria-labelledby="life-title" class="about-section">
+<h3 id="life-title">生活上</h3>
+<p>喜欢美食。不止于品尝，也着迷于食物背后的技法与原理，以及一道菜所承载的文化与历史。希望有一天能把味道描述清楚，而不是只会说好吃。</p>
+<p>爱看电影，但一直有点审片障碍，很难迅速进入一部影片的世界。尤其喜欢 Jessica Lange 和 Tilda Swinton。</p>
+<p>也喜欢音乐。Lady Gaga 早期粉丝，三座大山在我这里的排名一直是 Whitney Houston ≥ Mariah Carey &gt; Céline Dion，另外也很喜欢 Michael Jackson。我爱唱歌，退休后的理想是去酒吧驻唱。</p>
+<p><dl class="plain-list">
+<div class="plain-row"><dt>经常在做</dt><dd>找吃的、看电影、听歌、唱歌，以及研究它们为什么吸引我。</dd></div>
+<div class="plain-row"><dt>歌手排名</dt><dd>Whitney ≥ Mariah &gt; Céline</dd></div>
+<div class="plain-row"><dt>想做的事</dt><dd>退休以后，在一间不太大的酒吧唱到打烊。</dd></div>
+</dl></p>
+<p><div aria-live="polite" class="movie-line">
+<strong id="movie-count">…</strong>
+<span class="movie-status" id="movie-count-label">部已记录的影视作品。</span>
+<a href="/Movies/">去 Movies 页面看看 ↗</a>
+</div></p>
+</section>
+<section aria-labelledby="work-title" class="about-section">
+<h3 id="work-title">工作上</h3>
+<p>做过销售和策划，职业生涯的后半程一直在各类公司担任产品经理。后来做过智能制造工厂 COO，从规划产品的人变成每天面对交付、组织和效率的人。</p>
+<p>现在是 AI 行业某公司的高级产品总监。工作内容会变，但我关心的事情没有太大变化：先弄清楚真实的问题，再想办法让复杂的系统对人简单一点。</p>
+</section>
+<section aria-labelledby="site-title" class="about-section">
+<h3 id="site-title">关于这个博客</h3>
+<p>这里运行在 Bearblog 上。我选择它是因为足够简单，也保留了足够多自己动手的空间。比如 Movies 页面，会定时读取我的豆瓣观看记录，再补全信息并渲染出来。它也是我目前最得意的一个页面。</p>
+<p>Daily 收录日常更新，Article 放教程和长文。如果只是想随便逛逛，从任何一篇开始都可以。</p>
+</section>
+<section aria-labelledby="find-title" class="about-section">
+<h3 id="find-title">在哪儿找到我</h3>
+<p class="contact-line"><a href="https://solazy.me/">主页</a><span class="sep">/</span><a href="https://m.okjike.com/users/9fa44a7f-fbe9-4733-ab74-6b6682d642fc">即刻</a><span class="sep">/</span><a href="https://x.com/somkanel">𝕏</a><span class="sep">/</span><a href="https://t.me/fakeye">不求甚解</a><span class="sep">/</span><a href="https://www.instagram.com/somkanel/">Instagram</a><span class="sep">/</span><a href="https://w.dianping.com/cube/evoke/dianping.html?url=dianping%3A%2F%2Fuser%3Fuserid%3D33351874&amp;shareid=1ZI5eY02JC_1777731534">大众点评</a></p>
+<p>以上。以后想起什么，再回来补。</p>
+</section>
+<section aria-labelledby="activity-title" class="activity">
+<h3 id="activity-title">在这里写下的文字</h3>
+<p class="writing-note" id="writing-range">Daily 与 Article · 全部历史累计</p>
+<div aria-live="polite" class="writing-totals">
+<p class="writing-total"><strong id="writing-total-words">…</strong><span>字 · 累计正文</span></p>
+<p class="writing-total"><strong id="writing-total-posts">…</strong><span>篇 · 已发表文章</span></p>
+</div>
+<p class="writing-note" id="writing-breakdown"></p>
+<p class="writing-note" id="writing-status" role="status">正在读取全部历史统计…</p>
+<details class="writing-rules writing-note">
+<summary>字数统计说明</summary>
+<p>统计 Daily 和 Article 的全部公开文章，跨分类文章按链接去重。汉字每字计 1，其他语言单词与连续数字各计 1；包含正文小标题、列表、表格、引用及行内代码，不计文章标题、日期、标签、标点、空白、图片属性及代码块。引用文字也包含在内。</p>
+<p>数字代表当前已发表正文的体量，会随旧文修改、删除及分类调整更新。下方按发布日期汇总，表示该日期所发文章的当前字数。</p>
+</details>
+<h4 class="writing-year-title">过去 365 天的博客更新</h4>
+<div id="github-graph-container">
+<div aria-live="polite" id="post-stats" role="status">正在读取更新记录…</div>
+<div class="heatmap-layout">
+<div aria-hidden="true" class="weekday-labels"><span>周一</span><span>周三</span><span>周五</span></div>
+<div id="heatmap-scroll-container">
+<div aria-label="过去 365 天博客更新记录" class="github-heatmap" id="heatmap" role="group"></div>
+</div>
+</div>
+<p aria-live="polite" id="heatmap-detail">点按日期，查看当天发布的篇数与字数。</p>
+<div id="heatmap-footer">
+<span>颜色按篇数加深 · 字数累计覆盖全部历史</span>
+<div aria-hidden="true" class="heatmap-legend"><span>0</span><span class="cube level-0"></span><span class="cube level-1"></span><span class="cube level-2"></span><span class="cube level-3"></span><span class="cube level-4"></span><span>4+ 篇</span></div>
+</div>
+</div>
+</section>
+
+</div>
+
+<script>
+(() => {
+    const count = document.getElementById('movie-count');
+    const label = document.getElementById('movie-count-label');
+    const url = 'https://raw.githubusercontent.com/somkanel/sol-douban-data/main/data/movie.json?t=' + Date.now();
+
+    fetch(url, { cache: 'no-store' })
+      .then(response => {
+        if (!response.ok) throw new Error('JSON HTTP ' + response.status);
+        return response.json();
+      })
+      .then(data => {
+        const movies = Array.isArray(data) ? data : (Array.isArray(data.list) ? data.list : []);
+        count.textContent = String(movies.length);
+        label.textContent = '部已记录的影视作品。';
+        label.classList.remove('movie-status');
+      })
+      .catch(error => {
+        console.error('Movie count loading failed:', error);
+        count.textContent = '…';
+        label.textContent = '观影数据暂时没有加载出来。';
+      });
+  })();
+
+(() => {
+  'use strict';
+  const DATA_URL = 'https://raw.githubusercontent.com/somkanel/sol-blog-data/main/writing-data/writing-stats.json';
+  const DAY = 86400000;
+  const number = new Intl.NumberFormat('zh-CN');
+  const format = value => number.format(value);
+  const byId = id => document.getElementById(id);
+  const isCount = value => Number.isSafeInteger(value) && value >= 0;
+  const isDay = value => typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value)
+    && Number.isFinite(Date.parse(value + 'T00:00:00Z'))
+    && new Date(value + 'T00:00:00Z').toISOString().slice(0, 10) === value;
+
+  function validate(data) {
+    if (data.schema_version !== 1 || data.complete !== true || data.scope?.period !== 'all-time'
+      || !isCount(data.totals?.words) || !isCount(data.totals?.posts) || !data.by_date
+      || !isDay(data.totals.first_date) || !isDay(data.totals.last_date)
+      || !Number.isFinite(Date.parse(data.generated_at))) throw new Error('Invalid statistics');
+    let posts = 0, words = 0;
+    for (const [day, entry] of Object.entries(data.by_date)) {
+      if (!isDay(day) || !isCount(entry.posts) || !isCount(entry.words)) throw new Error('Invalid daily statistics');
+      posts += entry.posts;
+      words += entry.words;
+    }
+    if (words !== data.totals.words || posts !== data.totals.posts) throw new Error('Statistics totals mismatch');
+    for (const tag of ['daily', 'article']) {
+      if (!isCount(data.by_tag?.[tag]?.words) || !isCount(data.by_tag?.[tag]?.posts)) throw new Error('Invalid tag statistics');
+    }
+  }
+
+  function render(data) {
+    validate(data);
+    byId('writing-total-words').textContent = format(data.totals.words);
+    byId('writing-total-posts').textContent = format(data.totals.posts);
+    byId('writing-range').textContent = '全部历史 · ' + data.totals.first_date + ' 至 ' + data.totals.last_date;
+    byId('writing-breakdown').textContent = '日更 ' + format(data.by_tag.daily.posts) + ' 篇 / '
+      + format(data.by_tag.daily.words) + ' 字；长文 ' + format(data.by_tag.article.posts) + ' 篇 / '
+      + format(data.by_tag.article.words) + ' 字。跨分类文章在累计总数中只计算一次。';
+    const updated = new Intl.DateTimeFormat('zh-CN', {
+      timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit',
+      hour: '2-digit', minute: '2-digit', hour12: false,
+    }).format(new Date(data.generated_at));
+    const stale = Date.now() - Date.parse(data.generated_at) > 48 * 60 * 60 * 1000;
+    byId('writing-status').textContent = '统计更新于 ' + updated + '（北京时间）'
+      + (stale ? ' · 数据已超过两天未更新' : '');
+
+    const parts = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Shanghai',
+      year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(new Date());
+    const part = type => parts.find(item => item.type === type).value;
+    const today = Date.parse(part('year') + '-' + part('month') + '-' + part('day') + 'T00:00:00Z');
+    const first = today - 364 * DAY;
+    const start = first - new Date(first).getUTCDay() * DAY;
+    let activeDays = 0, yearPosts = 0, yearWords = 0;
+    const fragment = document.createDocumentFragment();
+    const describe = (key, entry) => key + '：' + (entry.posts
+      ? '发布 ' + format(entry.posts) + ' 篇，共 ' + format(entry.words) + ' 字'
+      : '未发布文章');
+    const select = (key, entry) => { byId('heatmap-detail').textContent = describe(key, entry); };
+    let latest = null;
+    for (let timestamp = start; timestamp <= today; timestamp += DAY) {
+      if (timestamp < first) {
+        const padding = document.createElement('span');
+        padding.className = 'cube cube-padding';
+        padding.setAttribute('aria-hidden', 'true');
+        fragment.appendChild(padding);
+        continue;
+      }
+      const key = new Date(timestamp).toISOString().slice(0, 10);
+      const entry = data.by_date[key] || { posts: 0, words: 0 };
+      if (entry.posts > 0) { activeDays += 1; latest = [key, entry]; }
+      yearPosts += entry.posts;
+      yearWords += entry.words;
+      const cube = document.createElement('button');
+      cube.type = 'button';
+      const level = entry.posts === 0 ? 0 : Math.min(entry.posts, 4);
+      cube.className = 'cube level-' + level;
+      cube.title = describe(key, entry);
+      cube.setAttribute('aria-label', cube.title);
+      cube.addEventListener('click', () => select(key, entry));
+      cube.addEventListener('focus', () => select(key, entry));
+      cube.addEventListener('mouseenter', () => select(key, entry));
+      fragment.appendChild(cube);
+    }
+    byId('post-stats').textContent = '过去 365 天更新 ' + format(activeDays) + ' 天，发布 '
+      + format(yearPosts) + ' 篇，共 ' + format(yearWords) + ' 字';
+    byId('heatmap').replaceChildren(fragment);
+    byId('heatmap').setAttribute('aria-label', '过去 365 天博客更新记录，可点按日期查看篇数和字数');
+    if (latest) select(...latest);
+    else byId('heatmap-detail').textContent = '过去 365 天暂无文章发布。';
+    requestAnimationFrame(() => {
+      const scroller = byId('heatmap-scroll-container');
+      scroller.scrollLeft = scroller.scrollWidth;
+    });
+  }
+
+  async function load() {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 25000);
+    try {
+      const response = await fetch(DATA_URL, { signal: controller.signal, cache: 'no-cache' });
+      if (!response.ok) throw new Error('Writing statistics HTTP ' + response.status);
+      render(await response.json());
+    } catch (error) {
+      console.error('Writing statistics loading failed:', error);
+      byId('writing-status').textContent = '写作统计暂时未加载，请稍后刷新。';
+      byId('post-stats').textContent = '更新记录暂时未加载。';
+      byId('heatmap-detail').textContent = '';
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+  load();
+})();
+
+</script>
+</body></html>
