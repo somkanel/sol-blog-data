@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "complete": true,
-  "generated_at": "2026-11-22T22:32:00.382483+00:00",
+  "generated_at": "2026-11-23T16:08:42.075191+00:00",
   "scope": {
     "period": "all-time",
     "tags": [
@@ -19,16 +19,16 @@
     "description": "汉字每字计1，其他语言单词及连续数字各计1；包含正文小标题、列表、表格、引用和行内代码；不含文章标题、日期、标签、导航、图片说明属性、代码块、标点和空白。"
   },
   "totals": {
-    "posts": 719,
-    "words": 800017,
-    "active_days": 712,
+    "posts": 721,
+    "words": 802380,
+    "active_days": 714,
     "first_date": "2019-05-14",
-    "last_date": "2026-11-21"
+    "last_date": "2026-11-23"
   },
   "by_tag": {
     "daily": {
-      "posts": 706,
-      "words": 767962
+      "posts": 708,
+      "words": 770325
     },
     "article": {
       "posts": 13,
@@ -2883,6 +2883,14 @@
     "2026-11-21": {
       "posts": 1,
       "words": 527
+    },
+    "2026-11-22": {
+      "posts": 1,
+      "words": 1112
+    },
+    "2026-11-23": {
+      "posts": 1,
+      "words": 1251
     }
   },
   "posts": [
@@ -3665,7 +3673,7 @@
       ],
       "words": 928,
       "body_sha256": "1458465f934b3e5f4463d6bc4025747ed69f41bd7c23a8db137c22497fb9a16b",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20250123/",
@@ -3676,7 +3684,7 @@
       ],
       "words": 885,
       "body_sha256": "8b05de728ed870e0bcffeb17b8dbc3c3773c4746046c876021130cdbcc56ecc5",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/9613/",
@@ -3698,7 +3706,7 @@
       ],
       "words": 972,
       "body_sha256": "fe285d45b4e4051bc5bc04fc5716781463752e02def05f49d04ee6337d18c921",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20250203/",
@@ -3709,7 +3717,7 @@
       ],
       "words": 537,
       "body_sha256": "f4e4d288f069f282b8576be871a3792c838621bbe369590abedbd8afc2bbc639",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20250204/",
@@ -3720,7 +3728,7 @@
       ],
       "words": 144,
       "body_sha256": "24ae4e791c50bc1f7389a9b0e29acd64471f6f0f07b24136cab7726e812c0ed5",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20250205/",
@@ -3731,7 +3739,7 @@
       ],
       "words": 762,
       "body_sha256": "02422e11fb5ea5a63f3bd6db13a4c0680972c7e3735e11036696d831f1a5166c",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20250206/",
@@ -3742,7 +3750,7 @@
       ],
       "words": 497,
       "body_sha256": "5c142ade8368fa299b4e3d2ad88069fd7318359afbb17cee0243f96c151038c2",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20250207/",
@@ -3753,7 +3761,7 @@
       ],
       "words": 825,
       "body_sha256": "6c1c76ae86343f2bbe0062f5b97cd48f7e202036f70e90464d8d688acfaf175a",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20250208/",
@@ -3764,7 +3772,7 @@
       ],
       "words": 220,
       "body_sha256": "fcf1faafef8ad8a985e3d78ad03f7062831987c9bf270b60b303b094178f7218",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20250209/",
@@ -3775,7 +3783,7 @@
       ],
       "words": 561,
       "body_sha256": "b8d411315af33a226bdb985d7bb50782ccbe7d8f656a86cdc06c529545dc2a49",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20250210/",
@@ -3786,7 +3794,7 @@
       ],
       "words": 1401,
       "body_sha256": "b6d28816540ccf43edf1caaa48fa0590ccda1a49394591dee71e46d569eb920e",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/cruiseshiptips/",
@@ -3808,7 +3816,7 @@
       ],
       "words": 2260,
       "body_sha256": "31c9e8d94d311db2c3fc3ca31b109ebf76c37d5cdb2009c261eb96415e19a57c",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20250212/",
@@ -3819,7 +3827,7 @@
       ],
       "words": 1096,
       "body_sha256": "10ffdc3abf0ecc31a3b8f5b1e1f01bb186673c21c5763f462478b3cb6972146c",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20250213/",
@@ -3830,7 +3838,7 @@
       ],
       "words": 814,
       "body_sha256": "dfa54e2f42bf600d85e4bd31365143012d2d4431ecfcedaf12d411e4f582f11d",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20250214/",
@@ -3841,7 +3849,7 @@
       ],
       "words": 1019,
       "body_sha256": "5c5e74e2889fbe408dafe40ef930b20950f68ca4e08e167fbb61efc2731feb6f",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20250215/",
@@ -3852,7 +3860,7 @@
       ],
       "words": 655,
       "body_sha256": "e212ee7a387110121eb0619ff93bbeb4ec071727b25df6359b08353dd39a60ad",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20250216/",
@@ -3863,7 +3871,7 @@
       ],
       "words": 686,
       "body_sha256": "9e95240b6464a85f18e127f34f6371f22cb6033f25ce96a70e29104882563a3c",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20250217/",
@@ -3874,7 +3882,7 @@
       ],
       "words": 1302,
       "body_sha256": "73aa4c3e08dc1a75612825f98940feae31f5cccf967da4a4cdeafeb08f5219b4",
-      "checked_at": "2026-11-17T23:52:30.458678+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20250218/",
@@ -3885,7 +3893,7 @@
       ],
       "words": 1314,
       "body_sha256": "b98ae47b6d4b4d1327fd54792242ecc50aea4159a663f9e6d742d222f29d40fe",
-      "checked_at": "2026-11-17T23:52:30.458678+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20250219/",
@@ -3896,7 +3904,7 @@
       ],
       "words": 1470,
       "body_sha256": "f322700d389a2458d4bf75768fb763881a395f5e1e29d65fb4929869cb38d051",
-      "checked_at": "2026-11-17T23:52:30.458678+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20250220/",
@@ -3907,7 +3915,7 @@
       ],
       "words": 964,
       "body_sha256": "4327939050ecdce2d28c3a30c70232dbc907a51f3cc976494650f99569e714ab",
-      "checked_at": "2026-11-17T23:52:30.458678+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20250221/",
@@ -3918,7 +3926,7 @@
       ],
       "words": 951,
       "body_sha256": "7d8ab39a46bbde4d8ff52171516b64f572c69ec34eccc41954b03c5c9207a4f8",
-      "checked_at": "2026-11-17T23:52:30.458678+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20250222/",
@@ -3929,7 +3937,7 @@
       ],
       "words": 2612,
       "body_sha256": "99f1a8a1abb52ae97396efda3842b4432bcd29ebcecebc6cd7c562485d79284c",
-      "checked_at": "2026-11-17T23:52:30.458678+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20250223/",
@@ -3940,7 +3948,7 @@
       ],
       "words": 492,
       "body_sha256": "1e4bd3db9e5f2c5ad21460d3ca79d7fc0deab9672c35e03ee0e307ea942ed0c9",
-      "checked_at": "2026-11-17T23:52:30.458678+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/202502-24/",
@@ -3951,7 +3959,7 @@
       ],
       "words": 1367,
       "body_sha256": "6066466f8680599a367b27b97dcc23b6b02bedcc441a87cb2179d039bc11435e",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20250225/",
@@ -3962,7 +3970,7 @@
       ],
       "words": 647,
       "body_sha256": "5581b7d710051f100a50af6e30bf8c466ad2f4e8581333f950f183eef1e2faae",
-      "checked_at": "2026-11-17T23:52:30.458678+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20250226/",
@@ -3973,7 +3981,7 @@
       ],
       "words": 1380,
       "body_sha256": "db0d54d8cf3a87e106bcbba76ed5d95fbeabb74e4ffceabe71ec16bf1d226df4",
-      "checked_at": "2026-11-17T23:52:30.458678+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20250227/",
@@ -3984,7 +3992,7 @@
       ],
       "words": 934,
       "body_sha256": "56654594089bbdd72c11f8c403e04682a0962278486c7131058a158d2a5b66c3",
-      "checked_at": "2026-11-17T23:52:30.458678+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20250228/",
@@ -3995,7 +4003,7 @@
       ],
       "words": 1511,
       "body_sha256": "0b795d54efddf9bf7f258ff119d278678bc0396de3acf96980a70f9a75634e05",
-      "checked_at": "2026-11-17T23:52:30.458678+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20250301/",
@@ -4006,7 +4014,7 @@
       ],
       "words": 878,
       "body_sha256": "8142f072e969f0ade891f1ecb28c20812e980930f52089cae8bf72e7f871b242",
-      "checked_at": "2026-11-17T23:52:30.458678+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20250302/",
@@ -4017,7 +4025,7 @@
       ],
       "words": 1128,
       "body_sha256": "6dd6228457a2bd589dd46bd9d7ba927e81a7d3896e94e4af8041bdaf45be63c0",
-      "checked_at": "2026-11-17T23:52:30.458678+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20250303/",
@@ -10001,7 +10009,7 @@
       ],
       "words": 1299,
       "body_sha256": "20cc296118af04a9d35f46f0aee83427196588d2d9cbd3170ab5d265dc87261b",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20260903/",
@@ -10012,7 +10020,7 @@
       ],
       "words": 1144,
       "body_sha256": "05a47c53da65268737eca2c0ecc74ce83dc5ca4167c85c05f4a81024c8a8e8e7",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20260904/",
@@ -10023,7 +10031,7 @@
       ],
       "words": 1522,
       "body_sha256": "f6d54ebb06c42b0db6a0e6ff59ddc19b33ed666668b2e0db21c104b7d0eaa234",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20260905/",
@@ -10034,7 +10042,7 @@
       ],
       "words": 749,
       "body_sha256": "3d291a811c8ac91e338aabb74fddedcbe206d4010c8bc064c2b76b16b829ab9f",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20260906/",
@@ -10045,7 +10053,7 @@
       ],
       "words": 922,
       "body_sha256": "c60489cf0f9a0691d2fac9dc83c6bf2cd86507a92926779df015a6651c58082f",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20260907/",
@@ -10056,7 +10064,7 @@
       ],
       "words": 1330,
       "body_sha256": "21b347411dd3a683d74057e85d14a385053619c1d887abbdcaa265c8c10c33f1",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20260909/",
@@ -10067,7 +10075,7 @@
       ],
       "words": 1317,
       "body_sha256": "419fa5a3627d71e45739eb08576ab2e90b5f1b928ca0e50aad1c2d32fdf4e8f6",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20260910/",
@@ -10078,7 +10086,7 @@
       ],
       "words": 1266,
       "body_sha256": "b64a14fe2e7eb656e98ace28297e30a2a244ee3477a4be2286d041d90bb482fd",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20260911/",
@@ -10089,7 +10097,7 @@
       ],
       "words": 1366,
       "body_sha256": "18b799673c73688dd9121c8768a015de8e42a0a631950906930177f4cd5fce19",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20260912/",
@@ -10100,7 +10108,7 @@
       ],
       "words": 817,
       "body_sha256": "1f96f45c8c1d6ef0db800679b53d5dca55a9fd2b652645ae0cabb0d06f60258d",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20260913/",
@@ -10111,7 +10119,7 @@
       ],
       "words": 466,
       "body_sha256": "18f8dd727d08c91cb52f59c4622bf4ad0d9f554bc9842c29ddd2e72d146307bc",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20260914/",
@@ -10122,7 +10130,7 @@
       ],
       "words": 2643,
       "body_sha256": "d7cda858c46ad5857049b4bdd691ebe5bb3d2ce1e21b6f5050c7ad56b5fb4871",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20260915/",
@@ -10133,7 +10141,7 @@
       ],
       "words": 1413,
       "body_sha256": "c3464bb8fba53d4b181d02a1d6c1e023b26b2c638256639454c0aa3ee846918f",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20260918/",
@@ -10144,7 +10152,7 @@
       ],
       "words": 1637,
       "body_sha256": "43383d0ee15173df71592b32368e930c10b9135427d0113639e1f493f682b04c",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20260919/",
@@ -10155,7 +10163,7 @@
       ],
       "words": 491,
       "body_sha256": "0eb16602cb31f32f1b17cd5d8763720568fbef3d2e62f12d5a5a93e760a1a853",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20260920/",
@@ -10166,7 +10174,7 @@
       ],
       "words": 1538,
       "body_sha256": "caf4373c8bbdd9f5f0f93a7bc9ff8bfe8c38e05b85482cf5117a9bd4c839dbd5",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20260921/",
@@ -10177,7 +10185,7 @@
       ],
       "words": 1547,
       "body_sha256": "b65ca7d5cee627273ed24f2012e62d5dc6bdcc893e775b61f6def3358ab8e22e",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20260923/",
@@ -10188,7 +10196,7 @@
       ],
       "words": 1466,
       "body_sha256": "e2380e14c85b3bcf6f951706f0a049c435289e4dabed7de14c438a536db68c7a",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/202609/",
@@ -10210,7 +10218,7 @@
       ],
       "words": 1151,
       "body_sha256": "d651467cff8f45f61ab26cc1a854bc68d07808ee8b3f309d70ab188c50007b6b",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20260926/",
@@ -10221,7 +10229,7 @@
       ],
       "words": 1391,
       "body_sha256": "e00958643f26c98a569efc53b6cd3dc7e0321537069a8add6569786e61665254",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20260927/",
@@ -10232,7 +10240,7 @@
       ],
       "words": 1540,
       "body_sha256": "d04400eec98cb00bf8215b5d41e2823e7cf5eab7fc5096455bb7015099bcd430",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20260929/",
@@ -10243,7 +10251,7 @@
       ],
       "words": 1318,
       "body_sha256": "8e8d65e361b217518ff4b7baf19ca55c4ad1a5b96e1d3a5997b441ec5f203d6b",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20260930/",
@@ -10254,7 +10262,7 @@
       ],
       "words": 1254,
       "body_sha256": "24e1ba334f1f17b925ed9fb6c5a1a1f758172ceab34ca6e95542bfe2bc178cd3",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20261001/",
@@ -10265,7 +10273,7 @@
       ],
       "words": 1070,
       "body_sha256": "8f89206a5c5b6f7c02a96ae0abb39bb9a019768aec9c6918fa9066bbcfb0da16",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20261002/",
@@ -10276,7 +10284,7 @@
       ],
       "words": 1229,
       "body_sha256": "aaf963ed520ad4bf6a88efbf937557222e596d7cfe388769ced17e71cca6371d",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20261003/",
@@ -10287,7 +10295,7 @@
       ],
       "words": 1481,
       "body_sha256": "7c6a04e6ff105f64f9f0411725281b3d50d4d4301a7a5dd8c8988d5db4c48cf9",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20261004/",
@@ -10298,7 +10306,7 @@
       ],
       "words": 1314,
       "body_sha256": "c2672755a30e6e938ef65e9e34670cfa553e07291bbecb9bbb289fea0de4367a",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20261005/",
@@ -10309,7 +10317,7 @@
       ],
       "words": 1243,
       "body_sha256": "b1fbdd9117a340f729ca17fef2c050858c6e751384fdb84d7a73203722a32030",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20261006/",
@@ -10320,7 +10328,7 @@
       ],
       "words": 1351,
       "body_sha256": "2bfd8a2aafba089744cdfa9d7da1ed112ecdca3510d24e2c84d6baa7adbcb7fd",
-      "checked_at": "2026-11-17T14:37:23.199328+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20261008/",
@@ -10738,7 +10746,7 @@
       ],
       "words": 632,
       "body_sha256": "49b9841ba10ecde6fc6553b34a56af54542ebd730972182d2c78a025e693aa95",
-      "checked_at": "2026-11-22T22:31:36.927041+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20261117/",
@@ -10749,7 +10757,7 @@
       ],
       "words": 1771,
       "body_sha256": "4349f2a149059f2f19db23eb321e0b43a88273409e431fca6c4c0c5f6df92ee7",
-      "checked_at": "2026-11-22T22:31:36.927041+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20261118/",
@@ -10760,7 +10768,7 @@
       ],
       "words": 1373,
       "body_sha256": "68b1b0ddd42a73822db5dafbc058217014cc514b8f99ef6bfe1e56108d84cc77",
-      "checked_at": "2026-11-22T22:31:36.927041+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20261119/",
@@ -10771,7 +10779,7 @@
       ],
       "words": 1897,
       "body_sha256": "289d18a9f1e139e7f87655d699efaeefe0f3c04bbfae8c1a286c7b33eaf5cf8f",
-      "checked_at": "2026-11-22T22:31:36.927041+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20261120/",
@@ -10782,7 +10790,7 @@
       ],
       "words": 1148,
       "body_sha256": "a9b7f2f0362115ab96c18dde37b55e9954d73ec02120b7cb297545ac73e859dc",
-      "checked_at": "2026-11-22T22:31:36.927041+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     },
     {
       "url": "https://blog.solazy.me/20261121/",
@@ -10793,14 +10801,36 @@
       ],
       "words": 527,
       "body_sha256": "c13ea3f489fda75038bce38251689ae368196164ba804f44b0f53a94fd964a34",
-      "checked_at": "2026-11-22T22:31:36.927041+00:00"
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
+    },
+    {
+      "url": "https://blog.solazy.me/20261122/",
+      "title": "名人访谈里的成功学",
+      "date": "2026-11-22",
+      "tags": [
+        "daily"
+      ],
+      "words": 1112,
+      "body_sha256": "1eb8c241d9df0407fa667e30bace70cca5202b57a566b5f62fc4d12d61447afa",
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
+    },
+    {
+      "url": "https://blog.solazy.me/20261123/",
+      "title": "不要和蠢人打交道",
+      "date": "2026-11-23",
+      "tags": [
+        "daily"
+      ],
+      "words": 1251,
+      "body_sha256": "51890a0631d8d7a3135a4bab53b34df772927fccb7d591e54e345bcec2094d10",
+      "checked_at": "2026-11-23T16:08:18.076649+00:00"
     }
   ],
   "refresh": {
     "mode": "incremental",
-    "fetched_posts": 67,
-    "reused_posts": 652,
-    "oldest_checked_at": "2026-11-17T14:37:23.199328+00:00",
-    "body_scan_seconds": 23.46
+    "fetched_posts": 68,
+    "reused_posts": 653,
+    "oldest_checked_at": "2026-11-17T23:52:30.458678+00:00",
+    "body_scan_seconds": 24.0
   }
 }
